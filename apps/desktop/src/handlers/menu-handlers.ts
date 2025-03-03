@@ -4,7 +4,9 @@ import { IpcRenderer } from "electron";
 
 export default class ClientMenuActionHandler implements IMenuActionHandler {
   ipcRenderer: IpcRenderer;
-  constructor(ipcRenderer: IpcRenderer) {}
+  constructor(ipcRenderer: IpcRenderer) {
+    this.ipcRenderer = ipcRenderer;
+  }
   quit = () => this.ipcRenderer.send(Events.QUIT);
   undo = () => this.ipcRenderer.send(Events.UNDO);
   redo = () => this.ipcRenderer.send(Events.UNDO);
