@@ -1,4 +1,4 @@
-import { BrowserWindow } from "electron";
+import { BrowserWindow, OpenDialogOptions, SaveDialogOptions } from "electron";
 
 export interface IMenuActionHandler {
   quit: (menuItem: Electron.MenuItem, win: BrowserWindow | null) => void;
@@ -14,4 +14,15 @@ export interface IMenuActionHandler {
   fullscreen: (menuItem: Electron.MenuItem, win: BrowserWindow | null) => void;
   about: (menuItem: Electron.MenuItem, win: BrowserWindow | null) => void;
   devtools: (menuItem: Electron.MenuItem, win: BrowserWindow | null) => void;
+}
+
+export interface IClipboardHandler {
+  readText: () => void;
+  writeText: (options: any) => void;
+  clear: () => void;
+}
+
+export interface IDialogHandlers {
+  showOpenDialog: (options: OpenDialogOptions) => void;
+  showSaveDialog: (options: SaveDialogOptions) => void;
 }

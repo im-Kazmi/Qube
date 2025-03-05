@@ -15,3 +15,14 @@ export enum Events {
   UNDO = "UNDO",
   REDO = "REDO",
 }
+
+export enum ClipboardEvents {
+  READ_TEXT = "READ_TEXT",
+  WRITE_TEXT = "WRITE_TEXT",
+  CLEAR = "CLEAR",
+}
+
+export enum DialogEvents {
+  SHOW_OPEN_DIALOG = "SHOW_OPEN_DIALOG",
+  SHOW_SAVE_DIALOG = "SHOW_SAVE_DIALOG",
+}

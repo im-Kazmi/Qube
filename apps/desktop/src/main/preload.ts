@@ -1,11 +1,10 @@
-import ClientMenuActionHandler from "@/handlers/menu-handlers";
-import { Events } from "../types/events";
-import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron";
+import { contextBridge } from "electron";
+import { menuHandlers } from "@/ipc-handlers/menu";
+import { clipboard } from "@/ipc-handlers/clipboard";
+import { dialog } from "@/ipc-handlers/dialog";
 
-const electronHandler = {
-  menuActions: new ClientMenuActionHandler(ipcRenderer),
-};
+contextBridge.exposeInMainWorld("menu", menuHandlers);
+contextBridge.exposeInMainWorld("clipboard", clipboard);
+contextBridge.exposeInMainWorld("dialog", dialog);
 
-contextBridge.exposeInMainWorld("qube", electronHandler);
-
-export type ElectronHandler = typeof electronHandler;
+export type MenuHandler = typeof menuHandlers;
